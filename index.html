@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block main %}
+<h1>Portfolio</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.shares }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.total }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4">Cash</td>
+            <td>{{ cash }}</td>
+        </tr>
+        <tr>
+            <td colspan="4"><strong>Total</strong></td>
+            <td><strong>{{ total }}</strong></td>
+        </tr>
+    </tbody>
+</table>
+<a href="/buy" class="btn btn-primary">Buy</a>
+<a href="/sell" class="btn btn-secondary">Sell</a>
+{% endblock %}
